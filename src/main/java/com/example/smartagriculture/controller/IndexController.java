@@ -15,9 +15,6 @@ import java.util.Map;
 public class IndexController {
 
     @Autowired
-    private User user;
-
-    @Autowired
     private IndexService indexService;
 
     @RequestMapping("/auth/register")

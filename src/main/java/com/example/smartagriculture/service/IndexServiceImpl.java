@@ -13,9 +13,6 @@ import java.util.Map;
 public class IndexServiceImpl implements IndexService {
 
     @Autowired
-    private User user;
-
-    @Autowired
     private UserDao userDao;
 
     @Override
