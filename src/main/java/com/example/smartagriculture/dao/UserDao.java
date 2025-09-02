@@ -22,6 +22,10 @@ public interface UserDao {
             "WHERE user_id = #{user_id}")
     int update(User user);
 
+    @Update("UPDATE users SET username = #{username}, update_time = NOW() " +
+            "WHERE user_id = #{user_id}")
+    int updateUsernameAndAvatar(Integer user_id, String username, String avatar_url);
+
     @Update("UPDATE users SET password = #{password}, update_time = NOW() " +
             "WHERE user_id = #{user_id}")
     int updatePassword(User user);
