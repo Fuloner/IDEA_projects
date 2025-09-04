@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,6 +51,9 @@ public class IndexServiceImpl implements IndexService {
             return ResponseEntity.status(400).body(response); // 已存在相同用户名或手机号
         }
 
+        user.setCreate_at(LocalDateTime.now());
+        user.setUpdate_at(LocalDateTime.now());
+
         // 写入数据库
         userDao.insert(user);
         response.put("code", 200);
@@ -73,9 +77,9 @@ public class IndexServiceImpl implements IndexService {
         }
 
         User user_ = userDao.selectByPhone(phoneNumber);
-        if (user == null || password != user.getPassword()) {
+        if (user_ == null || !password.equals(user_.getPassword())) {
             response.put("code", 400);
-            response.put("message", "用户名或密码错误");
+            response.put("message", "电话号码或密码错误");
             response.put("data", user);
             return ResponseEntity.status(400).body(response);
         }

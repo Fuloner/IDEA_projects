@@ -15,17 +15,17 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/users/{user_id}")
+    @GetMapping("/api/users/{user_id}")
     @ResponseBody
     public ResponseEntity<Map<String, Object>> getUserInfo(@PathVariable("user_id") Integer user_id)
     {return userService.getUserInfo(user_id);}
 
-    @PostMapping("/users/{user_id}")
+    @PostMapping("/api/users/{user_id}")
     @ResponseBody
     public ResponseEntity<Map<String, Object>> updateUserInfo(
             @PathVariable("user_id") Integer user_id,
-            @PathVariable("username") String username,
-            @PathVariable("avatar_url") String avatar_url){
+            @RequestParam("username") String username,
+            @RequestParam("avatar_url") String avatar_url){
         return userService.updateUserInfo(user_id,username, avatar_url);
     }
 }

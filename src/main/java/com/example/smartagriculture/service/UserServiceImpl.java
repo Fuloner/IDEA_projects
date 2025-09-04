@@ -29,8 +29,8 @@ public class UserServiceImpl implements UserService {
         }
 
         User data = userDao.selectById(user_id.longValue());
-        response.put("code", 400);
-        response.put("message", "用户不存在");
+        response.put("code", 200);
+        response.put("message", "获取成功");
         response.put("data", data);
         return ResponseEntity.ok(response);
     }
@@ -54,9 +54,9 @@ public class UserServiceImpl implements UserService {
         data.put("user_id", user_id);
         data.put("update_at",user.getUpdate_at());
 
-        response.put("code", 400);
-        response.put("message", "用户不存在");
-        response.put("data", null);
+        response.put("code", 200);
+        response.put("message", "更新成功");
+        response.put("data", data);
 
         return ResponseEntity.ok(response);
     }

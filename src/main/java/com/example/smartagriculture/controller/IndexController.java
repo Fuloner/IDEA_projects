@@ -17,11 +17,11 @@ public class IndexController {
     @Autowired
     private IndexService indexService;
 
-    @RequestMapping("/auth/register")
+    @RequestMapping("/api/auth/register")
     @ResponseBody
     public ResponseEntity<Map<String, Object>> getRegister(@RequestBody User user){return indexService.getRegister(user);}
 
-    @RequestMapping("/auth/login")
+    @RequestMapping("/api/auth/login")
     @ResponseBody
     public ResponseEntity<Map<String, Object>> getLogin(@RequestBody User user){return indexService.getLogin(user);}
 }

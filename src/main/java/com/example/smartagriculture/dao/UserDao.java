@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Mapper
-@Component("Mapper")
+@Component("UserMapper")
 public interface UserDao {
     // 插入操作
     @Insert("INSERT INTO users (user_id, username, password, role, phone_number, avatar_url, create_at, update_at) " +
@@ -18,15 +18,15 @@ public interface UserDao {
     @Delete("DELETE FROM users WHERE user_id = #{user_id}")
     int deleteById(@Param("user_id") Long user_id);
 
-    @Update("UPDATE users SET username = #{username}, phone_number = #{phone_number}, avatar_url = #{avatar_url}, update_time = NOW() " +
+    @Update("UPDATE users SET username = #{username}, phone_number = #{phone_number}, avatar_url = #{avatar_url}, update_at = NOW() " +
             "WHERE user_id = #{user_id}")
     int update(User user);
 
-    @Update("UPDATE users SET username = #{username}, update_time = NOW() " +
+    @Update("UPDATE users SET username = #{username}, avatar_url = #{avatar_url},update_at = NOW() " +
             "WHERE user_id = #{user_id}")
     int updateUsernameAndAvatar(Integer user_id, String username, String avatar_url);
 
-    @Update("UPDATE users SET password = #{password}, update_time = NOW() " +
+    @Update("UPDATE users SET password = #{password}, update_at = NOW() " +
             "WHERE user_id = #{user_id}")
     int updatePassword(User user);
 
